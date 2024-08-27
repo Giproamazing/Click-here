@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable Text</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .clickable-text {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 30s;
+        }
+        .message {
+            margin-top: 20px;
+        }
+        .hidden-text {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden text to confuse inspect elementers -->
+    <div class="hidden-text">
+        <!-- Fake HTML/CSS/JS codes -->
+        <script>
+            // Fake JS code snippet
+            const fakeCode = `let fakeCode = 'fakevalue'; document.querySelector('.fake').innerText = 'Fake Text';`;
+            document.write(fakeCode);
+        </script>
+        <style>
+            .fake { color: transparent; }
+        </style>
+        <div class="fake">This is a fake element</div>
+    </div>
+    <div>
+        <p>5444915445055948455918491505445090091309690</p>
+        <p id="clickable-text" class="clickable-text">5 and 9</p>
+        <div id="message" class="message"></div>
+    </div>
+    <script>
+        let clickCount = 0;
+        const clickableText = document.getElementById('clickable-text');
+        const message = document.getElementById('message');
+
+        // Fade in the clickable text after 30 seconds
+        setTimeout(() => {
+            clickableText.style.opacity = 1;
+            clickableText.style.pointerEvents = 'auto';
+        }, 30000);
+
+        clickableText.addEventListener('click', () => {
+            if (clickableText.style.opacity == 0) return; // Prevent clicks if not faded in
+
+            clickCount++;
+            if (clickCount >= 230) {
+                message.textContent = 'Now type lolster or you first figured out the cipher :) I wanna help too!';
+                message.style.color = 'yellow';
+                clickableText.style.opacity = 0;
+                clickableText.style.pointerEvents = 'none';
+                return;
+            }
+            if (clickCount === 147) {
+                message.textContent = 'I Love checkers';
+                message.style.color = 'green';
+                clickableText.style.opacity = 0;
+                clickableText.style.pointerEvents = 'none';
+            } else if (clickCount === 30) {
+                message.textContent = 'Just give up nothing will happen';
+                message.style.color = 'red';
+                setTimeout(() => {
+                    clickableText.style.opacity = 1;
+                    clickableText.style.pointerEvents = 'auto';
+                }, 3000);
+                clickableText.style.opacity = 0;
+                clickableText.style.pointerEvents = 'none';
+            } else if (clickCount === 140) {
+                message.textContent = 'Don\'t think too much about it';
+                message.style.color = 'yellow';
+                setTimeout(() => {
+                    clickableText.style.opacity = 1;
+                    clickableText.style.pointerEvents = 'auto';
+                }, 5000);
+                clickableText.style.opacity = 0;
+                clickableText.style.pointerEvents = 'none';
+            }
+        });
+
+        // Fake cipher answers
+        const fakeAnswers = ['abcd1234', 'zyxw9876', 'testvalue'];
+        fakeAnswers.forEach(answer => {
+            console.log(answer); // Outputs fake answers to console
+        });
+    </script>
+</body>
+  </html>
